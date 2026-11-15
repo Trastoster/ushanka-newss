@@ -1,223 +1,133 @@
-/* --- СБРОС И БАЗОВЫЕ СТИЛИ --- */
+/* Сброс, чтобы ничего не вылезало за экран */
 * {
-    box-sizing: border-box; /* Важно: padding не увеличивает ширину элементов */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background: #F4F5F7;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     color: #1a1a1a;
+    line-height: 1.5;
 }
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: black;
 }
 
-/* --- ШАПКА --- */
+/* Шапка сайта */
 header {
     background: #FFFFFF;
-    margin: 15px 20px;
-    border-radius: 20px;
-    padding: 15px 20px;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 15px;
     display: flex;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Легкая тень для объема */
-}
-
-.header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    gap: 15px;
 }
 
 header h1 {
+    font-size: 24px;
     margin: 0;
-    font-size: 1.8rem;
+}
+
+.search-bar {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    flex-grow: 1; /* Поиск занимает свободное место */
+    max-width: 300px;
 }
 
 .menu {
     display: flex;
     gap: 20px;
     list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 1.1rem;
+    font-size: 18px;
+    flex-wrap: wrap;
 }
 
-.menu a {
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.menu a:hover {
-    color: #666;
-}
-
-.search-bar {
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    outline: none;
-    font-size: 1rem;
-    margin-left: 20px;
-    width: 250px;
-    transition: border-color 0.2s;
-}
-
-.search-bar:focus {
-    border-color: #888;
-}
-
-.menu-toggle {
-    display: none; /* Скрыта на десктопе */
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    padding: 0;
-}
-
-/* --- ОСНОВНОЙ КОНТЕНТ --- */
+/* Основной контент */
 .container {
-    max-width: 800px; 
-    margin: 0 auto;   
-    padding: 0 20px; 
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 .lastnews {
-    margin: 30px 0 20px 0;
-    font-size: 1.8rem;
+    margin: 20px 0 15px 10px;
+    font-size: 24px;
 }
 
 .news-item {
-    margin: 15px 0;
+    margin: 10px;
 }
 
 .news-item a {
     display: block;
-    padding: 25px 20px;
+    padding: 20px 15px;
     background: #FFFFFF;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.news-item a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    font-size: 18px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .text-box {
-    padding: 25px 20px;
+    padding: 20px 15px;
     background: #FFFFFF;
-    margin: 15px 0;
-    border-radius: 20px;
-    font-size: 1.1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    margin: 10px;
+    border-radius: 15px;
+    font-size: 18px;
 }
 
 footer {
     text-align: center;
-    padding: 30px 20px;
+    padding: 20px;
     color: #888;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
-
 /* =========================================
-   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ (Экраны до 768px)
+   МОБИЛЬНАЯ ВЕРСИЯ (Экраны до 768px)
    ========================================= */
 @media (max-width: 768px) {
-    
-    /* Шапка */
     header {
-        margin: 10px;
-        padding: 15px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
-
-    /* Логотип и бургер в одну строку */
-    .header-top {
-        display: flex;
-        justify-content: space-between;
+        flex-direction: column; /* Все элементы шапки встают в столбик */
         align-items: center;
+        text-align: center;
     }
 
-    .menu-toggle {
-        display: block; /* Показываем бургер */
-    }
-
-    /* Скрываем меню по умолчанию на телефоне */
-    #navMenu {
-        display: none;
+    .search-bar {
         width: 100%;
-        background: #f9f9f9;
-        border-radius: 15px;
-        padding: 10px;
-    }
-
-    /* Класс active будет добавляться через JS для показа меню */
-    #navMenu.active {
-        display: block;
+        max-width: 100%;
     }
 
     .menu {
-        flex-direction: column; /* Пункты меню в столбик */
-        gap: 10px;
-        align-items: center;
-        font-size: 1.2rem;
-    }
-
-    .menu li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .menu li:last-child {
-        border-bottom: none;
-    }
-
-    /* Поиск на всю ширину */
-    .search-bar {
-        width: 100%;
-        margin-left: 0;
-        padding: 12px 15px; /* Удобнее нажимать пальцем */
-    }
-
-    /* Контент */
-    .container {
-        padding: 0 10px;
+        justify-content: center;
+        gap: 15px;
+        font-size: 16px;
+        padding: 0;
     }
 
     .lastnews {
-        font-size: 1.5rem;
-        margin: 20px 0 10px 0;
+        font-size: 20px;
+        text-align: center;
+        margin-left: 0;
     }
 
-    /* Карточки новостей */
     .news-item a {
-        font-size: 1.1rem;
-        padding: 20px 15px;
-        border-radius: 15px;
+        font-size: 16px;
+        padding: 15px;
     }
 
-    /* Текст в статьях */
     .text-box {
-        font-size: 1.05rem;
-        padding: 20px 15px;
-        border-radius: 15px;
+        font-size: 16px;
+        padding: 15px;
     }
 }

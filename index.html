@@ -2,22 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Ушанка — новостной сайт">
     <title>Новости Ушанка</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="header-top">
-            <h1><b>Ушанка</b></h1>
-            <!-- Кнопка бургер-меню (видна только на телефоне) -->
-            <button class="menu-toggle" id="menuToggle">☰</button>
-        </div>
-        
-        <input type="text" id="searchInput" placeholder="Поиск новостей..." class="search-bar">
-        
-        <nav id="navMenu">
+        <h1><b>Ушанка</b></h1>
+        <input type="text" id="searchInput" placeholder="Поиск..." class="search-bar">
+        <nav>
             <ul class="menu">
                 <li><a href="index.html"><b>Главная</b></a></li>
                 <li><a href="about.html"><b>О нас</b></a></li>
@@ -36,7 +30,7 @@
             <h2 class="news-item"><a href="newsaegorapc.html">Егор не играет в ПК всю неделю</a></h2>
         </section>
         
-        <p id="noResults" style="display: none; text-align: center; color: #888;">По вашему запросу ничего не найдено.</p>
+        <p id="noResults" style="display: none; text-align: center; color: #888;">Ничего не найдено.</p>
     </main>
 
     <footer>
@@ -44,7 +38,6 @@
     </footer>
 
     <script>
-        // Скрипт поиска
         document.getElementById('searchInput').addEventListener('input', function(e) {
             let searchText = e.target.value.toLowerCase().trim(); 
             let newsItems = document.querySelectorAll('.news-item'); 
@@ -66,14 +59,6 @@
             } else {
                 noResultsMsg.style.display = 'none';
             }
-        });
-
-        // Скрипт для бургер-меню
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
         });
     </script>
 </body>
