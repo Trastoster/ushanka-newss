@@ -9,9 +9,15 @@
 </head>
 <body>
     <header>
-        <h1><b>Ушанка</b></h1>
-        <input type="text" id="searchInput" placeholder="Поиск новостей" class="search-bar">
-        <nav>
+        <div class="header-top">
+            <h1><b>Ушанка</b></h1>
+            <!-- Кнопка бургер-меню (видна только на телефоне) -->
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+        
+        <input type="text" id="searchInput" placeholder="Поиск новостей..." class="search-bar">
+        
+        <nav id="navMenu">
             <ul class="menu">
                 <li><a href="index.html"><b>Главная</b></a></li>
                 <li><a href="about.html"><b>О нас</b></a></li>
@@ -28,10 +34,9 @@
             <h2 class="news-item"><a href="ksushaliz.html">Ксюша лизнула себя</a></h2>
             <h2 class="news-item"><a href="nasaasu.html">Настя ест суши</a></h2>
             <h2 class="news-item"><a href="newsaegorapc.html">Егор не играет в ПК всю неделю</a></h2>
-            
         </section>
         
-        <p id="noResults" style="display: none; text-align: center; color: #888;">По вашему молодежному запросу ничего не найдено.</p>
+        <p id="noResults" style="display: none; text-align: center; color: #888;">По вашему запросу ничего не найдено.</p>
     </main>
 
     <footer>
@@ -39,6 +44,7 @@
     </footer>
 
     <script>
+        // Скрипт поиска
         document.getElementById('searchInput').addEventListener('input', function(e) {
             let searchText = e.target.value.toLowerCase().trim(); 
             let newsItems = document.querySelectorAll('.news-item'); 
@@ -60,6 +66,14 @@
             } else {
                 noResultsMsg.style.display = 'none';
             }
+        });
+
+        // Скрипт для бургер-меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
         });
     </script>
 </body>

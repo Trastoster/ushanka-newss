@@ -1,47 +1,103 @@
-/* --- БАЗОВЫЕ СТИЛИ (для компьютеров) --- */
-body {
-    background: #F4F5F7;
-    font-family: Arial, sans-serif;
-    margin: 0; /* Убираем стандартные отступы браузера */
-    padding: 0;
+/* --- СБРОС И БАЗОВЫЕ СТИЛИ --- */
+* {
+    box-sizing: border-box; /* Важно: padding не увеличивает ширину элементов */
 }
 
+body {
+    background: #F4F5F7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    color: #1a1a1a;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- ШАПКА --- */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
     background: #FFFFFF;
     margin: 15px 20px;
     border-radius: 20px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Легкая тень для объема */
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
 }
 
 .menu {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 20px;
+    font-size: 1.1rem;
 }
 
 .menu a {
-    color: black;
-    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .menu a:hover {
-    color: gray;
+    color: #666;
+}
+
+.search-bar {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 1rem;
+    margin-left: 20px;
+    width: 250px;
+    transition: border-color 0.2s;
+}
+
+.search-bar:focus {
+    border-color: #888;
+}
+
+.menu-toggle {
+    display: none; /* Скрыта на десктопе */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* --- ОСНОВНОЙ КОНТЕНТ --- */
+.container {
+    max-width: 800px; 
+    margin: 0 auto;   
+    padding: 0 20px; 
 }
 
 .lastnews {
-    color: black;
-    margin: 25px 20px;
+    margin: 30px 0 20px 0;
+    font-size: 1.8rem;
 }
 
-/* Карточки на главной */
 .news-item {
-    margin: 15px 20px;
+    margin: 15px 0;
 }
 
 .news-item a {
@@ -49,105 +105,119 @@ header {
     padding: 25px 20px;
     background: #FFFFFF;
     border-radius: 20px;
-    font-size: 22px;
-    color: black;
-    text-decoration: none;
-    transition: 0.3s;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .news-item a:hover {
-    color: #555;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* Блоки с текстом в статьях */
 .text-box {
-    color: black;
     padding: 25px 20px;
     background: #FFFFFF;
-    margin: 15px 20px;
+    margin: 15px 0;
     border-radius: 20px;
-    font-size: 20px;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 800px; 
-    margin: 0 auto;   
-    padding: 0 20px; 
-}
-
-.search-bar {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 16px;
-    margin-left: 20px;
-    width: 200px;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
 footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 20px;
     color: #888;
+    font-size: 0.9rem;
 }
 
-/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ (экраны меньше 768px) --- */
+
+/* =========================================
+   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ (Экраны до 768px)
+   ========================================= */
 @media (max-width: 768px) {
-    /* Шапка становится вертикальной */
+    
+    /* Шапка */
     header {
+        margin: 10px;
+        padding: 15px;
         flex-direction: column;
         align-items: stretch;
         gap: 15px;
-        margin: 10px;
-        padding: 15px;
     }
 
-    /* Заголовок по центру */
-    header h1 {
+    /* Логотип и бургер в одну строку */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: block; /* Показываем бургер */
+    }
+
+    /* Скрываем меню по умолчанию на телефоне */
+    #navMenu {
+        display: none;
+        width: 100%;
+        background: #f9f9f9;
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    /* Класс active будет добавляться через JS для показа меню */
+    #navMenu.active {
+        display: block;
+    }
+
+    .menu {
+        flex-direction: column; /* Пункты меню в столбик */
+        gap: 10px;
+        align-items: center;
+        font-size: 1.2rem;
+    }
+
+    .menu li {
+        width: 100%;
         text-align: center;
-        margin: 0;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .menu li:last-child {
+        border-bottom: none;
     }
 
     /* Поиск на всю ширину */
     .search-bar {
-        margin: 0;
         width: 100%;
-        box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+        margin-left: 0;
+        padding: 12px 15px; /* Удобнее нажимать пальцем */
     }
 
-    /* Меню растягиваем и центрируем */
-    .menu {
-        justify-content: space-around;
-        font-size: 16px;
-        gap: 10px;
-    }
-
-    /* Уменьшаем отступы у контейнера */
+    /* Контент */
     .container {
         padding: 0 10px;
     }
 
     .lastnews {
-        margin: 20px 10px;
-        font-size: 22px;
+        font-size: 1.5rem;
+        margin: 20px 0 10px 0;
     }
 
-    /* Карточки новостей делаем чуть компактнее */
-    .news-item {
-        margin: 10px;
-    }
-
+    /* Карточки новостей */
     .news-item a {
-        font-size: 18px;
+        font-size: 1.1rem;
         padding: 20px 15px;
+        border-radius: 15px;
     }
 
-    /* Текстовые блоки в статьях */
+    /* Текст в статьях */
     .text-box {
-        margin: 10px;
+        font-size: 1.05rem;
         padding: 20px 15px;
-        font-size: 18px;
+        border-radius: 15px;
     }
 }
