@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1><b>Ушанка</b></h1>
-        <input type="text" id="searchInput" placeholder="Поиск новостей" class="search-bar" name="">
+        <input type="text" id="searchInput" placeholder="Поиск новостей" class="search-bar">
         <nav>
             <ul class="menu">
                 <li><a href="index.html"><b>Главная</b></a></li>
@@ -24,32 +24,28 @@
         <section id="newsList">
             <h1 class="lastnews">Последние новости:</h1>
             
-            <!-- Я добавил класс "news-item" для каждой новости, чтобы скрипт знал, что именно прятать -->
-            <h2 class="news-item"><a href="egoravsatcapc.html" class="lastnewss">Егор дал взятку Насте и поиграл в ПК</a></h2>
-            <h2 class="news-item"><a href="ksushaliz.html" class="lastnewss">Ксюша лизнула себя</a></h2>
-            <h2 class="news-item"><a href="nasaasu.html" class="lastnewss">Настя ест суши</a></h2>
-            <h2 class="news-item"><a href="newsaegorapc.html" class="lastnewss">Егор не играет в ПК всю неделю</a></h2>
+            <h2 class="news-item"><a href="egoravsatcapc.html">Егор дал взятку Насте и поиграл в ПК</a></h2>
+            <h2 class="news-item"><a href="ksushaliz.html">Ксюша лизнула себя</a></h2>
+            <h2 class="news-item"><a href="nasaasu.html">Настя ест суши</a></h2>
+            <h2 class="news-item"><a href="newsaegorapc.html">Егор не играет в ПК всю неделю</a></h2>
             
         </section>
         
-        <!-- Текст, который появится, если ничего не найдено -->
         <p id="noResults" style="display: none; text-align: center; color: #888;">По вашему молодежному запросу ничего не найдено.</p>
     </main>
 
     <footer>
-        <center><p>&copy; 2026 Новости "Ушанка"</p></center>
+        <p>&copy; 2026 Новости "Ушанка"</p>
     </footer>
 
     <script>
         document.getElementById('searchInput').addEventListener('input', function(e) {
             let searchText = e.target.value.toLowerCase().trim(); 
-            
             let newsItems = document.querySelectorAll('.news-item'); 
             let foundAny = false; 
 
             newsItems.forEach(function(item) {
                 let title = item.textContent.toLowerCase(); 
-                
                 if (title.includes(searchText)) {
                     item.style.display = 'block'; 
                     foundAny = true; 
