@@ -1,0 +1,68 @@
+body {
+	background: #F4F5F7;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 20px;
+	background: #FFFFFF;
+	margin: 15px 20px;
+	border-radius: 20px;
+}
+
+.menu {
+	display: flex;
+	gap: 30px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 30px;
+	font-family: sans-serif;
+}
+
+.menu a:hover {
+    color: gray;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: gray;
+}
+
+.lastnews {
+	color: black;
+	margin: 25px 20px;
+	border-radius: 30px;
+}
+
+.lastnewss {
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 35px 20px;
+	background: #FFFFFF;
+	margin: 15px 20px;
+	border-radius: 20px;
+}
+
+.container {
+    max-width: 800px; 
+    margin: 0 auto;   
+    padding: 0 20px; 
+}
+
+.search-bar {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    margin-left: 20px;
+}
